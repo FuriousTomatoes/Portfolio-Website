@@ -1,0 +1,24 @@
+$primary-color-1: #f3bf14;
+
+$size1920x1080: (
+  "primary-font-size": 70px,
+  "secondary-font-size": 25px,
+  "tertiary-font-size": 15px,
+);
+
+$size720: (
+  "primary-font-size": 50px,
+  "secondary-font-size": 18px,
+  "tertiary-font-size": 15px,
+);
+
+$light-theme: (
+  "primary-text-color": #111111,
+);
+
+$dark-theme: (
+  "primary-text-color": #ececec,
+);
+
+//sizes
+$sizes: ($size1920x1080, $size720);

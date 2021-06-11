@@ -1,0 +1,10 @@
+{
+    "version": 3,
+    "mappings": "AAEA,AAAA,MAAM,CAAC;EACL,gBAAgB,ECHA,OAAO;CDIxB",
+    "sources": [
+        "../scss/header-dark.scss",
+        "../scss/data.scss"
+    ],
+    "names": [],
+    "file": "header-dark.css"
+}
