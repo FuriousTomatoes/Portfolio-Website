@@ -1,24 +1,25 @@
-$primary-color-1: #f3bf14;
-
 $size1920x1080: (
   "primary-font-size": 70px,
   "secondary-font-size": 25px,
   "tertiary-font-size": 15px,
 );
-
 $size720: (
   "primary-font-size": 50px,
   "secondary-font-size": 18px,
   "tertiary-font-size": 15px,
 );
+$sizes: ($size1920x1080, $size720);
 
 $light-theme: (
+  "primary-color-1": #f5c835,
+  "background-color": whitesmoke,
+  "background-cover-color": white,
   "primary-text-color": #111111,
 );
-
 $dark-theme: (
+  "primary-color-1": #181818,
+  "background-color": #4d4d4d,
+  "background-cover-color": #202020,
   "primary-text-color": #ececec,
 );
-
-//sizes
-$sizes: ($size1920x1080, $size720);
+$themes: ($light-theme, $dark-theme);

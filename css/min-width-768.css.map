@@ -1,9 +1,0 @@
-{
-    "version": 3,
-    "mappings": "",
-    "sources": [
-        "../scss/min-width-768.scss"
-    ],
-    "names": [],
-    "file": "min-width-768.css"
-}

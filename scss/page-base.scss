@@ -1,0 +1,271 @@
+@import "data.scss";
+
+//--------------------------------------[Variables]--------------------------------------\\
+$header-height: 75px;
+$header-logo-height: 64px;
+$header-center-width: 5 / 3 * $header-logo-height;
+$header-links-vertical-padding: $header-height / 2 - 20px;
+$header-links-horizontal-padding: 15px;
+$header-social-links-height: $header-logo-height/2;
+
+//Responsive widths:
+$header-responsive-width: 917px;
+
+//Image sections:
+$image-section-margin: calc(10%);
+$image-section-padding: 30px;
+$image-responsive-width: 980px;
+
+//Photogalleries:
+$photogallery-image-height: 300px;
+$photogallery-image-width: $photogallery-image-height * 1.2;
+
+//--------------------------------------[Color Theme]--------------------------------------\\
+@mixin theme($index) {
+  $primary-color-1: map-get(nth($themes, $index), "primary-color-1");
+  $background-color: map-get(nth($themes, $index), "background-color");
+  $background-cover-color: map-get(
+    nth($themes, $index),
+    "background-cover-color"
+  );
+  $primary-text-color: map-get(nth($themes, $index), "primary-text-color");
+
+  @if $index == 2 {
+    #header-center > img {
+      filter: drop-shadow(0) brightness(1) contrast(1);
+    }
+  }
+  //Body:
+  body {
+    color: $primary-text-color;
+    background-color: $background-color;
+  }
+  //Photogallery:
+  .photo-gallery {
+    background-color: $background-cover-color;
+  }
+
+  //Header:
+  header {
+    background-color: $primary-color-1;
+    box-shadow: 0 10px 12px darken($primary-color-1, 25);
+  }
+  #header-left > nav > ul > li > a {
+    color: $primary-text-color;
+  }
+  #header-left > nav > ul > li > a:hover {
+    background-color: lighten($primary-color-1, 10);
+  }
+  .image-section {
+    background-color: $background-cover-color;
+  }
+  #header-right > div > a > img {
+    filter: invert(0.9);
+  }
+  #header-right > div > a > img:hover {
+    filter: invert(0.1);
+    //background-color: lighten($primary-color-1, 10);
+  }
+}
+
+//--------------------------------------[Responsive Layout]--------------------------------------\\
+@mixin responsive-layout($sizeIndex) {
+  $primary-font-size: map-get(nth($sizes, $sizeIndex), primary-font-size);
+  $secondary-font-size: map-get(nth($sizes, $sizeIndex), secondary-font-size);
+  $tertiary-font-size: map-get(nth($sizes, $sizeIndex), tertiary-font-size);
+
+  //Header:
+  #header-left > nav {
+    font-size: $tertiary-font-size;
+  }
+  #header-left > nav > ul {
+    padding: (($header-height - $tertiary-font-size)/2) 0;
+  }
+
+  //Content:
+  h1 {
+    font-size: $primary-font-size;
+  }
+  h2 {
+    font-size: $secondary-font-size;
+  }
+}
+
+@media (min-width: $header-responsive-width) {
+  @include responsive-layout(1);
+}
+@media (max-width: $header-responsive-width) {
+  @include responsive-layout(2);
+}
+
+//--------------------------------------[BODY]--------------------------------------\\
+body {
+  margin: 0;
+  font-family: "Roboto Mono", monospace;
+}
+
+//--------------------------------------[HEADER]--------------------------------------\\
+header {
+  width: 100%;
+  height: $header-height;
+}
+header a {
+  text-decoration: none;
+}
+
+//--------------------------------------[Header left]:
+#header-left {
+  float: left;
+  width: calc(50% - #{$header-center-width / 2});
+  //padding: ($header-height/2) 0;
+  font-weight: bold;
+}
+#header-left > nav {
+  height: $header-height;
+  font-family: "Roboto Mono", monospace;
+  text: {
+    transform: capitalize;
+    //shadow: 0 15px 1px #13131300, 0 13px 3px #030303bc;
+  }
+}
+#header-left > nav > ul {
+  margin: 0 0 0 3%;
+  height: $header-height;
+  overflow: hidden;
+  display: flex;
+  justify-content: left;
+
+  list-style-type: none;
+  //float: left;
+  // display: inline;
+  padding: 0;
+}
+#header-left > nav > ul > li {
+  text-align: center;
+  align-self: center;
+}
+#header-left > nav > ul > li > a {
+  display: block;
+  padding: $header-links-vertical-padding $header-links-horizontal-padding;
+}
+#header-left > nav > ul > li > a#current-page-link {
+  text-decoration: overline;
+}
+
+//--------------------------------------[Header center]:
+#header-center {
+  float: left;
+  width: $header-center-width;
+}
+#header-center > img {
+  height: $header-logo-height;
+  padding: ($header-height - $header-logo-height)/2 0;
+}
+//--------------------------------------[Header right]:
+#header-right {
+  float: left;
+  width: calc(50% - #{$header-center-width / 2});
+}
+#header-right > div {
+  margin-right: 3%;
+}
+#header-right > div > a > img {
+  margin-left: 1.5%;
+  float: right;
+  height: $header-social-links-height;
+  padding: ($header-height - $header-social-links-height)/2 0;
+}
+
+//--------------------------------------[CONTENT]--------------------------------------\\
+#title {
+  text-align: center;
+}
+
+//--------------------------------------[Image section]:
+.image-section {
+  max-width: 100%;
+  overflow: hidden;
+  padding: 30px;
+  display: flex;
+  align-items: flex-start;
+}
+.image-section.image-left {
+  margin-right: $image-section-margin;
+}
+.image-section.image-right {
+  margin-left: $image-section-margin;
+}
+
+.image-section > img {
+  float: left;
+  order: 0;
+  max-width: 60%;
+}
+.image-section.image-right > img {
+  order: 2;
+  margin: 0 0 0 $image-section-padding;
+}
+.image-section.image-left > img {
+  order: 0;
+  margin: 0 $image-section-padding 0 0;
+}
+
+.image-section > .section-text {
+  align-self: stretch;
+  order: 1;
+  //position: absolute;
+  //left: 40%;
+  height: inherit;
+  min-width: calc(40% - $image-section-padding);
+}
+
+.image-section > p {
+  float: left;
+  margin: 0;
+  padding: 0;
+}
+//--------------------------------------[Image section]:
+.photo-gallery {
+  display: flex;
+  overflow: hidden;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: baseline;
+  margin: 50px 15%;
+}
+.photo-gallery > a,
+.photo-gallery > img {
+  flex-grow: 1px;
+  margin: 2px;
+  max-width: 90%;
+}
+.photo-gallery img {
+  width: $photogallery-image-width;
+  height: $photogallery-image-height;
+  object-fit: cover;
+}
+
+@media (max-width: $header-responsive-width) {
+  #header-left > nav > ul {
+    display: none;
+  }
+}
+
+@media (max-width: $image-responsive-width) {
+  .image-section {
+    flex-wrap: wrap;
+    margin: 0 !important;
+  }
+  .image-section > img {
+    margin: 0 !important;
+    order: 0 !important;
+    width: 100% !important;
+    max-width: none;
+  }
+  .image-section > .section-text {
+    position: relative;
+    left: 0;
+    margin: 0 !important;
+    padding: 0;
+  }
+}
