@@ -40,6 +40,10 @@ header {
 
 header a {
   text-decoration: none;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
 }
 
 #header-left {
@@ -164,7 +168,7 @@ header a {
       -ms-flex-order: 1;
           order: 1;
   height: inherit;
-  min-width: calc(40% - $image-section-padding);
+  min-width: calc(40% - 30px);
 }
 
 .image-section > p {
@@ -187,6 +191,7 @@ header a {
       -ms-flex-align: baseline;
           align-items: baseline;
   margin: 50px 15%;
+  padding: 10px;
 }
 
 .photo-gallery > a,
@@ -203,6 +208,10 @@ header a {
   height: 300px;
   -o-object-fit: cover;
      object-fit: cover;
+}
+
+.photo-gallery > a > img {
+  max-width: 100%;
 }
 
 @media (max-width: 917px) {

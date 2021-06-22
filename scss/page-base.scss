@@ -24,10 +24,7 @@ $photogallery-image-width: $photogallery-image-height * 1.2;
 @mixin theme($index) {
   $primary-color-1: map-get(nth($themes, $index), "primary-color-1");
   $background-color: map-get(nth($themes, $index), "background-color");
-  $background-cover-color: map-get(
-    nth($themes, $index),
-    "background-cover-color"
-  );
+  $background-cover-color: map-get(nth($themes, $index), "background-cover-color");
   $primary-text-color: map-get(nth($themes, $index), "primary-text-color");
 
   @if $index == 2 {
@@ -111,6 +108,7 @@ header {
 }
 header a {
   text-decoration: none;
+  user-select: none;
 }
 
 //--------------------------------------[Header left]:
@@ -216,7 +214,7 @@ header a {
   //position: absolute;
   //left: 40%;
   height: inherit;
-  min-width: calc(40% - $image-section-padding);
+  min-width: calc(40% - #{$image-section-padding});
 }
 
 .image-section > p {
@@ -224,7 +222,7 @@ header a {
   margin: 0;
   padding: 0;
 }
-//--------------------------------------[Image section]:
+//--------------------------------------[Photo gallery]:
 .photo-gallery {
   display: flex;
   overflow: hidden;
@@ -232,6 +230,7 @@ header a {
   justify-content: center;
   align-items: baseline;
   margin: 50px 15%;
+  padding: 10px;
 }
 .photo-gallery > a,
 .photo-gallery > img {
@@ -243,6 +242,9 @@ header a {
   width: $photogallery-image-width;
   height: $photogallery-image-height;
   object-fit: cover;
+}
+.photo-gallery > a > img {
+  max-width: 100%;
 }
 
 @media (max-width: $header-responsive-width) {
